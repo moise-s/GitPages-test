@@ -22,6 +22,7 @@
 // loadImg();
 
 const BASE_URL_CAT = 'https://aws.random.cat/meow?ref=apilist.fun';
+const BASE_URL_DOG = 'https://dog.ceo/api/breeds/image/random';
 
 const getCats = async () => {
 	try {
@@ -33,21 +34,6 @@ const getCats = async () => {
 	}
 };
 
-const loadImgcat = async () => {
-	const img = document.getElementById('cat');
-	img.src = await getCats();
-};
-
-loadImgcat();
-
-const btncat = document.getElementById('change-cat');
-btncat.addEventListener('click', loadImgcat);
-
-
-//------------------------------------------
-const BASE_URL_DOG = 'https://dog.ceo/api/breeds/image/random';
-
-
 const getDogs = async () => {
 	try {
 		const data1 = await fetch(BASE_URL_DOG);
@@ -58,12 +44,20 @@ const getDogs = async () => {
 	}
 };
 
+const loadImgcat = async () => {
+	const img = document.getElementById('cat');
+	img.src = await getCats();
+};
+
 const loadImgdog = async () => {
 	const img = document.getElementById('dog');
 	img.src = await getDogs();
 };
 
+loadImgcat();
 loadImgdog();
 
+const btncat = document.getElementById('change-cat');
+btncat.addEventListener('click', loadImgcat);
 const btndog = document.getElementById('change-dog');
 btndog.addEventListener('click', loadImgdog);
